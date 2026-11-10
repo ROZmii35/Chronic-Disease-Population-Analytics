@@ -1,0 +1,4 @@
+﻿shuffle_partitions,trial_times_seconds,median_seconds,patient_groups,input_encounter_records,throughput_records_per_second
+2,5.672;4.421;4.036,4.421,9650000,13734415,3106834.86
+4,3.253;2.989;3.151,3.151,9650000,13734415,4358619.79
+8,2.69;2.444;2.38,2.444,9650000,13734415,5619260.27

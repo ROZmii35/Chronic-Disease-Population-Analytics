@@ -1,0 +1,101 @@
+{
+    "project": "Chronic Disease Population Analytics",
+    "generated_at": "2026-11-10T23:34:30",
+    "environment": {
+        "benchmark_type": "single-node",
+        "spark_version": "3.5.9",
+        "default_parallelism": 12,
+        "adaptive_query_execution": false,
+        "partition_settings": [
+            2,
+            4,
+            8
+        ],
+        "repeats": 3
+    },
+    "size_comparison": [
+        {
+            "dataset": "encounters",
+            "raw_bytes": 3002925426,
+            "raw_size": "2.80 GB",
+            "curated_bytes": 313317985,
+            "curated_size": "298.80 MB",
+            "size_reduction_percent": 89.57
+        },
+        {
+            "dataset": "patient_events",
+            "raw_bytes": 999999861,
+            "raw_size": "953.67 MB",
+            "curated_bytes": 108700898,
+            "curated_size": "103.67 MB",
+            "size_reduction_percent": 89.13
+        },
+        {
+            "dataset": "clinical_activity",
+            "raw_bytes": 1005400992,
+            "raw_size": "958.83 MB",
+            "curated_bytes": 79691655,
+            "curated_size": "76.00 MB",
+            "size_reduction_percent": 92.07
+        },
+        {
+            "dataset": "TOTAL",
+            "raw_bytes": 5008326279,
+            "raw_size": "4.66 GB",
+            "curated_bytes": 501710538,
+            "curated_size": "478.47 MB",
+            "size_reduction_percent": 89.98
+        }
+    ],
+    "analytics_read_benchmark": {
+        "record_count": 13734415,
+        "elapsed_seconds": 1.223,
+        "throughput_records_per_second": 11228511.12,
+        "throughput_definition": "Jumlah record dibagi waktu eksekusi dalam detik."
+    },
+    "partition_benchmark": [
+        {
+            "shuffle_partitions": 2,
+            "trial_times_seconds": [
+                5.672,
+                4.421,
+                4.036
+            ],
+            "median_seconds": 4.421,
+            "patient_groups": 9650000,
+            "input_encounter_records": 13734415,
+            "throughput_records_per_second": 3106834.86
+        },
+        {
+            "shuffle_partitions": 4,
+            "trial_times_seconds": [
+                3.253,
+                2.989,
+                3.151
+            ],
+            "median_seconds": 3.151,
+            "patient_groups": 9650000,
+            "input_encounter_records": 13734415,
+            "throughput_records_per_second": 4358619.79
+        },
+        {
+            "shuffle_partitions": 8,
+            "trial_times_seconds": [
+                2.69,
+                2.444,
+                2.38
+            ],
+            "median_seconds": 2.444,
+            "patient_groups": 9650000,
+            "input_encounter_records": 13734415,
+            "throughput_records_per_second": 5619260.27
+        }
+    ],
+    "methodology_notes": [
+        "HDFS size menggunakan ukuran logis, bukan ukuran setelah dikalikan replication factor.",
+        "Partition benchmark menggunakan groupBy(patient_nbr).count().",
+        "Median dihitung dari tiga kali pengujian.",
+        "Benchmark dijalankan pada single-node environment.",
+        "Waktu dapat dipengaruhi cache filesystem, JVM warm-up, dan beban komputer."
+    ]
+}

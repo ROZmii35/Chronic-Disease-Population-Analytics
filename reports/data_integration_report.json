@@ -1,22 +1,32 @@
 {
-    "project": "Chronic Disease Population Analytics",
-    "processing_engine": "Apache Spark 3.5.9",
-    "storage_format": "Parquet",
-    "compression": "Snappy",
-    "source_records": {
+    "application": "Chronic Disease Population Analytics",
+    "process": "Data Integration",
+    "timestamp": "2026-11-10T23:15:06.499219",
+    "status": "PASSED",
+    "input_records": {
         "encounters": 13734415,
         "patient_events": 4406252,
-        "clinical_activities": 8723515
+        "clinical_activity": 8723515,
+        "total_source_records": 26864182
     },
-    "integrated_records": 13734415,
-    "unique_integrated_encounters": 13734415,
-    "duplicate_integrated_encounters": 0,
-    "integration_status": "completed",
-    "output_paths": {
-        "encounters": "data/curated/parquet/encounters",
-        "patient_events": "data/curated/parquet/patient_events",
-        "clinical_activities": "data/curated/parquet/clinical_activity",
-        "encounter_analytics": "data/curated/parquet/encounter_analytics"
+    "output": {
+        "dataset": "encounter_analytics",
+        "records": 13734415,
+        "row_count_matches_encounters": true,
+        "format": "Parquet",
+        "compression": "Snappy",
+        "hdfs_path": "hdfs://localhost:9000/chronic-disease-analytics/analytics/encounter_analytics"
     },
-    "processing_time_seconds": 188.71
+    "performance": {
+        "read_seconds": 3.02,
+        "source_count_seconds": 2.34,
+        "event_aggregation_seconds": 0.1,
+        "activity_aggregation_seconds": 0.05,
+        "integration_write_seconds": 128.48,
+        "verification_seconds": 0.24,
+        "total_seconds": 134.25,
+        "throughput_source_records_per_second": 200106.44,
+        "shuffle_partitions": 4,
+        "parallelism": "local[2]"
+    }
 }

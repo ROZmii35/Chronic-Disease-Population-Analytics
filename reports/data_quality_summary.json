@@ -1,0 +1,12 @@
+{
+    "original_records": 101766,
+    "cleaned_records": 101766,
+    "original_columns": 50,
+    "cleaned_columns": 50,
+    "missing_patient_id": 0,
+    "missing_encounter_id": 0,
+    "duplicate_encounters": 0,
+    "invalid_readmission": 0,
+    "total_missing_values": 374017,
+    "cleaning_status": "completed"
+}

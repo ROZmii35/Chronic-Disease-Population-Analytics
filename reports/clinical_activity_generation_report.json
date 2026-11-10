@@ -1,0 +1,23 @@
+{
+    "dataset": "Chronic Disease Population Analytics",
+    "source": "Synthetic Encounters CSV",
+    "output_format": "CSV Long Format",
+    "generation_method": "Batch Wide-to-Long Transformation",
+    "random_seed": 42,
+    "encounter_sample_rate": 0.05,
+    "source_encounters_scanned": 5100000,
+    "selected_encounters": 255062,
+    "synthetic_records": 8723515,
+    "target_size_gb": 1.0,
+    "actual_size_gb": 1.005401,
+    "file_size_bytes": 1005400992,
+    "generation_time_seconds": 47.92,
+    "activity_distribution": {
+        "Medication": 5866426,
+        "Encounter_Metric": 2040496,
+        "Diagnosis": 760623,
+        "Laboratory": 55970
+    },
+    "data_origin": "synthetic_attribute_projection",
+    "synthetic_flag": true
+}

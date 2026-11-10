@@ -1,0 +1,23 @@
+{
+    "validation_engine": "Apache Spark 3.5.9",
+    "encounter_records": 13734415,
+    "activity_records": 8723515,
+    "unique_activity_ids": 8723515,
+    "unique_patients": 247653,
+    "unique_activity_encounters": 255062,
+    "duplicate_activity_ids": 0,
+    "unmatched_activities": 0,
+    "invalid_activity_types": 0,
+    "invalid_source_fields": 0,
+    "incorrect_field_mapping": 0,
+    "missing_activity_records": 0,
+    "invalid_synthetic_flags": 0,
+    "invalid_origins": 0,
+    "activity_distribution": {
+        "Laboratory": 55970,
+        "Encounter_Metric": 2040496,
+        "Diagnosis": 760623,
+        "Medication": 5866426
+    },
+    "validation_time_seconds": 68.48
+}

@@ -1,0 +1,23 @@
+{
+    "validation_engine": "Apache Spark 3.5.9",
+    "encounter_records": 13734415,
+    "unique_encounters": 13734415,
+    "unique_patients": 9650000,
+    "event_records": 4406252,
+    "unique_events": 4406252,
+    "duplicate_event_ids": 0,
+    "duplicate_encounter_ids": 0,
+    "unmatched_events": 0,
+    "invalid_event_types": 0,
+    "invalid_timestamps": 0,
+    "invalid_synthetic_flags": 0,
+    "invalid_sources": 0,
+    "event_distribution": {
+        "followup_scheduled": 440464,
+        "medication_review": 880798,
+        "admission_registered": 1102181,
+        "laboratory_activity": 1102273,
+        "discharge_registered": 880536
+    },
+    "validation_time_seconds": 71.5
+}

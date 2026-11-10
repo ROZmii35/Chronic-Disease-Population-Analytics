@@ -1,0 +1,22 @@
+{
+    "project": "Chronic Disease Population Analytics",
+    "processing_engine": "Apache Spark 3.5.9",
+    "storage_format": "Parquet",
+    "compression": "Snappy",
+    "source_records": {
+        "encounters": 13734415,
+        "patient_events": 4406252,
+        "clinical_activities": 8723515
+    },
+    "integrated_records": 13734415,
+    "unique_integrated_encounters": 13734415,
+    "duplicate_integrated_encounters": 0,
+    "integration_status": "completed",
+    "output_paths": {
+        "encounters": "data/curated/parquet/encounters",
+        "patient_events": "data/curated/parquet/patient_events",
+        "clinical_activities": "data/curated/parquet/clinical_activity",
+        "encounter_analytics": "data/curated/parquet/encounter_analytics"
+    },
+    "processing_time_seconds": 188.71
+}

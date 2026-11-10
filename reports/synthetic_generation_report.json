@@ -1,0 +1,13 @@
+{
+    "source_dataset": "UCI Diabetes 130-US Hospitals",
+    "generation_method": "Patient-Level Bootstrap Sampling",
+    "random_seed": 42,
+    "synthetic_records": 13734415,
+    "synthetic_patients": 9650000,
+    "synthetic_encounters": 13734415,
+    "target_size_gb": 3.0,
+    "actual_size_gb": 3.0029,
+    "file_size_bytes": 3002925426,
+    "generation_time_seconds": 147.01,
+    "synthetic_flag": true
+}

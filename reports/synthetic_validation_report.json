@@ -1,0 +1,130 @@
+{
+    "synthetic_records": 13734415,
+    "unique_patients": 9650000,
+    "unique_encounters": 13734415,
+    "duplicate_encounters": 0,
+    "invalid_origin": 0,
+    "readmission_comparison": {
+        "NO": {
+            "original_pct": 53.912,
+            "synthetic_pct": 53.881,
+            "difference_percentage_points": 0.03
+        },
+        ">30": {
+            "original_pct": 34.928,
+            "synthetic_pct": 34.951,
+            "difference_percentage_points": 0.023
+        },
+        "<30": {
+            "original_pct": 11.16,
+            "synthetic_pct": 11.168,
+            "difference_percentage_points": 0.008
+        }
+    },
+    "age_comparison": {
+        "[70-80)": {
+            "original_pct": 25.616,
+            "synthetic_pct": 25.605,
+            "difference_percentage_points": 0.01
+        },
+        "[60-70)": {
+            "original_pct": 22.093,
+            "synthetic_pct": 22.118,
+            "difference_percentage_points": 0.025
+        },
+        "[50-60)": {
+            "original_pct": 16.957,
+            "synthetic_pct": 16.939,
+            "difference_percentage_points": 0.018
+        },
+        "[80-90)": {
+            "original_pct": 16.899,
+            "synthetic_pct": 16.897,
+            "difference_percentage_points": 0.002
+        },
+        "[40-50)": {
+            "original_pct": 9.517,
+            "synthetic_pct": 9.522,
+            "difference_percentage_points": 0.005
+        },
+        "[30-40)": {
+            "original_pct": 3.709,
+            "synthetic_pct": 3.714,
+            "difference_percentage_points": 0.004
+        },
+        "[90-100)": {
+            "original_pct": 2.745,
+            "synthetic_pct": 2.75,
+            "difference_percentage_points": 0.006
+        },
+        "[20-30)": {
+            "original_pct": 1.628,
+            "synthetic_pct": 1.626,
+            "difference_percentage_points": 0.003
+        },
+        "[10-20)": {
+            "original_pct": 0.679,
+            "synthetic_pct": 0.672,
+            "difference_percentage_points": 0.007
+        },
+        "[0-10)": {
+            "original_pct": 0.158,
+            "synthetic_pct": 0.157,
+            "difference_percentage_points": 0.001
+        }
+    },
+    "missing_counts": {
+        "encounter_id": 0,
+        "patient_nbr": 0,
+        "race": 306651,
+        "gender": 0,
+        "age": 0,
+        "weight": 13302518,
+        "admission_type_id": 0,
+        "discharge_disposition_id": 0,
+        "admission_source_id": 0,
+        "time_in_hospital": 0,
+        "payer_code": 5433415,
+        "medical_specialty": 6741800,
+        "num_lab_procedures": 0,
+        "num_procedures": 0,
+        "num_medications": 0,
+        "number_outpatient": 0,
+        "number_emergency": 0,
+        "number_inpatient": 0,
+        "diag_1": 2788,
+        "diag_2": 48200,
+        "diag_3": 191621,
+        "number_diagnoses": 0,
+        "max_glu_serum": 13012095,
+        "A1Cresult": 11436074,
+        "metformin": 0,
+        "repaglinide": 0,
+        "nateglinide": 0,
+        "chlorpropamide": 0,
+        "glimepiride": 0,
+        "acetohexamide": 0,
+        "glipizide": 0,
+        "glyburide": 0,
+        "tolbutamide": 0,
+        "pioglitazone": 0,
+        "rosiglitazone": 0,
+        "acarbose": 0,
+        "miglitol": 0,
+        "troglitazone": 0,
+        "tolazamide": 0,
+        "examide": 0,
+        "citoglipton": 0,
+        "insulin": 0,
+        "glyburide-metformin": 0,
+        "glipizide-metformin": 0,
+        "glimepiride-pioglitazone": 0,
+        "metformin-rosiglitazone": 0,
+        "metformin-pioglitazone": 0,
+        "change": 0,
+        "diabetesMed": 0,
+        "readmitted": 0,
+        "data_origin": 0,
+        "synthetic_flag": 0
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "project": "Chronic Disease Population Analytics",
+    "stage": "Data Validation",
+    "generated_at": "2026-11-10T14:18:17.316287+00:00",
+    "source": "HDFS",
+    "datasets": {
+        "encounters": {
+            "total_records": 13734415,
+            "unique_patients": 9650000,
+            "duplicate_encounter_ids": 0,
+            "missing_encounter_ids": 0,
+            "missing_patient_ids": 0,
+            "invalid_synthetic_flags": 0,
+            "missing_data_origin": 0
+        },
+        "patient_events": {
+            "total_records": 4406252,
+            "duplicate_event_ids": 0,
+            "missing_event_ids": 0,
+            "missing_patient_ids": 0,
+            "missing_encounter_ids": 0,
+            "invalid_event_types": 0,
+            "invalid_timestamps": 0,
+            "unmatched_patient_encounter_pairs": 0,
+            "invalid_synthetic_flags": 0,
+            "missing_source": 0
+        },
+        "clinical_activity": {
+            "total_records": 8723515,
+            "duplicate_activity_ids": 0,
+            "missing_activity_ids": 0,
+            "missing_patient_ids": 0,
+            "missing_encounter_ids": 0,
+            "invalid_activity_types": 0,
+            "unmatched_patient_encounter_pairs": 0,
+            "invalid_synthetic_flags": 0,
+            "missing_data_origin": 0
+        }
+    },
+    "overall_status": "PASSED",
+    "total_records": 26864182,
+    "total_validation_issues": 0
+}

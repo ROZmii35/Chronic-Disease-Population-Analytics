@@ -1,0 +1,23 @@
+{
+    "dataset": "Chronic Disease Population Analytics",
+    "source": "Synthetic Encounters CSV",
+    "format": "JSON Lines (NDJSON)",
+    "generation_method": "Batch Event Simulation",
+    "random_seed": 42,
+    "event_probability": 0.4,
+    "synthetic_records": 4406252,
+    "scanned_encounters": 11100000,
+    "target_size_gb": 1.0,
+    "actual_size_gb": 1.0,
+    "file_size_bytes": 999999861,
+    "generation_time_seconds": 28.1,
+    "event_distribution": {
+        "followup_scheduled": 440464,
+        "medication_review": 880798,
+        "laboratory_activity": 1102273,
+        "discharge_registered": 880536,
+        "admission_registered": 1102181
+    },
+    "timestamp_type": "Simulated UTC",
+    "synthetic_flag": true
+}

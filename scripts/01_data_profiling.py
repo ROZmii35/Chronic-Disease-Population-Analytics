@@ -34,51 +34,25 @@ missing_report.to_csv(f"{output_dir}/missing_values_report.csv", index=False)
 # cek duplikasi
 print("\n[4] Cek Duplikasi:")
 print("Duplicate rows: ", df.duplicated().sum())
-# ==========================================
-# 6. UNIQUE PATIENTS
-# ==========================================
 
+# 6. CEK UNIQUE PATIENTS
 print("\n[5] PATIENT INFORMATION")
-
-print(
-    "Unique Patients:",
-    df["patient_nbr"].nunique()
-)
-
-print(
-    "Total Encounters:",
-    df["encounter_id"].nunique()
-)
-
+print("Unique Patients:", df["patient_nbr"].nunique())
+print("Total Encounters:", df["encounter_id"].nunique())
 print(
     "Average Encounters per Patient:",
-    round(
-        len(df) / df["patient_nbr"].nunique(), 2
-    )
+    round(len(df) / df["patient_nbr"].nunique(), 2)
 )
 
-# ==========================================
-# 7. READMISSION DISTRIBUTION
-# ==========================================
+# 7. DISTRIBUSI PENERIMAAN ULANG
+print("\n[6] DISTRIBUSI PENERIMAAN ULANG")
+print(df["readmitted"].value_counts())
 
-print("\n[6] READMISSION DISTRIBUTION")
-
-print(
-    df["readmitted"].value_counts()
-)
-
-# ==========================================
-# 8. NUMERICAL STATISTICS
-# ==========================================
-
-print("\n[7] NUMERICAL STATISTICS")
-
+# 8. STATISTIK NUMERIK
+print("\n[7] STATISTIK NUMERIK")
 print(df.describe().to_string())
 
-# ==========================================
-# 9. SAVE PROFILE REPORT
-# ==========================================
-
+# 9. MENYIMPAN PROFIL REPORT
 profile = {
     "total_records": int(len(df)),
     "total_columns": int(len(df.columns)),
@@ -96,10 +70,7 @@ profile = {
     )
 }
 
-with open(
-    f"{output_dir}/dataset_profile.json",
-    "w"
-) as f:
+with open(f"{output_dir}/dataset_profile.json","w") as f:
     json.dump(profile, f, indent=4)
 
 print("\nProfiling completed!")

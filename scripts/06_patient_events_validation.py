@@ -1,41 +1,23 @@
-
 from pyspark.sql import SparkSession
-from pyspark.sql.types import (
-    StructType,
-    StructField,
-    StringType,
-    BooleanType
-)
-from pyspark.sql.functions import (
-    col,
-    to_timestamp
-)
+from pyspark.sql.types import (StructType, StructField, StringType, BooleanType)
+from pyspark.sql.functions import (col, to_timestamp)
 import json
 import os
 import time
 
-# ==========================================
-# 1. CONFIGURATION
-# ==========================================
-
+# 1. KONFIGURASI
 ENCOUNTER_FILE = (
     "data/synthetic/encounters/"
     "encounters_synthetic.csv"
 )
-
 EVENT_FILE = (
     "data/synthetic/patient_events/"
     "patient_events.jsonl"
 )
-
 REPORT_DIR = "reports"
-
 os.makedirs(REPORT_DIR, exist_ok=True)
 
-# ==========================================
 # 2. SPARK SESSION
-# ==========================================
-
 spark = (
     SparkSession.builder
     .appName("PatientEventsValidation")
@@ -45,20 +27,14 @@ spark = (
     .config("spark.sql.adaptive.enabled", "true")
     .getOrCreate()
 )
-
 spark.sparkContext.setLogLevel("WARN")
-
 start_time = time.time()
-
 print("=" * 60)
 print("PATIENT EVENTS VALIDATION")
 print("APACHE SPARK 3.5.9")
 print("=" * 60)
 
-# ==========================================
-# 3. DEFINE JSON SCHEMA
-# ==========================================
-
+# 3. MENDEFINISIKAN JSON SCHEMA
 event_schema = StructType([
     StructField("event_id", StringType(), True),
     StructField("patient_nbr", StringType(), True),
@@ -69,12 +45,8 @@ event_schema = StructType([
     StructField("synthetic_flag", BooleanType(), True)
 ])
 
-# ==========================================
-# 4. READ DATA
-# ==========================================
-
+# 4. MEMBACA DATA
 print("\n[1] Reading CSV and JSON...")
-
 encounters = (
     spark.read
     .option("header", True)
@@ -82,72 +54,32 @@ encounters = (
     .csv(ENCOUNTER_FILE)
     .select("patient_nbr", "encounter_id")
 )
+events = (spark.read.schema(event_schema).json(EVENT_FILE))
 
-events = (
-    spark.read
-    .schema(event_schema)
-    .json(EVENT_FILE)
-)
-
-# ==========================================
-# 5. BASIC COUNTS
-# ==========================================
-
+# 5. Menghitung jumlah record dan unique IDs
 print("\n[2] Counting records...")
-
 encounter_count = encounters.count()
 event_count = events.count()
-
-unique_encounters = (
-    encounters.select("encounter_id")
-    .distinct()
-    .count()
-)
-
-unique_events = (
-    events.select("event_id")
-    .distinct()
-    .count()
-)
-
-unique_patients = (
-    encounters.select("patient_nbr")
-    .distinct()
-    .count()
-)
-
+unique_encounters = (encounters.select("encounter_id").distinct().count())
+unique_events = (events.select("event_id").distinct().count())
+unique_patients = (encounters.select("patient_nbr").distinct().count())
 print("Encounter records:", encounter_count)
 print("Unique encounters:", unique_encounters)
 print("Unique patients:", unique_patients)
 print("Event records:", event_count)
 print("Unique events:", unique_events)
 
-# ==========================================
-# 6. DUPLICATE VALIDATION
-# ==========================================
-
+# 6. VALIDASI DUPLIKAT
 print("\n[3] Checking duplicate IDs...")
 
-duplicate_event_ids = (
-    event_count - unique_events
-)
+duplicate_event_ids = (event_count - unique_events)
 
-duplicate_encounter_ids = (
-    encounter_count - unique_encounters
-)
+duplicate_encounter_ids = (encounter_count - unique_encounters)
 
-# ==========================================
 # 7. FOREIGN KEY VALIDATION
-# ==========================================
-
 print("\n[4] Checking patient-encounter relationships...")
 
-valid_encounters = (
-    encounters
-    .select("patient_nbr", "encounter_id")
-    .dropDuplicates()
-)
-
+valid_encounters = (encounters.select("patient_nbr", "encounter_id").dropDuplicates())
 unmatched_events = (
     events.join(
         valid_encounters,
@@ -155,15 +87,10 @@ unmatched_events = (
         how="left_anti"
     )
 )
-
 unmatched_event_count = unmatched_events.count()
 
-# ==========================================
-# 8. EVENT TYPE VALIDATION
-# ==========================================
-
+# 8. VALIDASI EVENT TYPE
 print("\n[5] Checking event types...")
-
 allowed_types = [
     "admission_registered",
     "laboratory_activity",
@@ -171,7 +98,6 @@ allowed_types = [
     "discharge_registered",
     "followup_scheduled"
 ]
-
 invalid_event_types = (
     events.filter(
         ~col("event_type").isin(allowed_types)
@@ -179,12 +105,8 @@ invalid_event_types = (
     ).count()
 )
 
-# ==========================================
-# 9. TIMESTAMP VALIDATION
-# ==========================================
-
+# 9. VALIDASI TIMESTAMP
 print("\n[6] Checking timestamps...")
-
 invalid_timestamps = (
     events.withColumn(
         "parsed_timestamp",
@@ -193,54 +115,37 @@ invalid_timestamps = (
             "yyyy-MM-dd'T'HH:mm:ss'Z'"
         )
     )
-    .filter(
-        col("parsed_timestamp").isNull()
-    )
-    .count()
+    .filter(col("parsed_timestamp").isNull()).count()
 )
 
-# ==========================================
-# 10. SYNTHETIC FLAG VALIDATION
-# ==========================================
-
+# 10. VALIDASI SYNTHETIC FLAG
 print("\n[7] Checking synthetic flags...")
-
 invalid_flags = (
     events.filter(
         (col("synthetic_flag") != True)
         | col("synthetic_flag").isNull()
     ).count()
 )
-
 invalid_sources = (
     events.filter(
         col("source") != "synthetic_simulation"
     ).count()
 )
 
-# ==========================================
-# 11. EVENT DISTRIBUTION
-# ==========================================
-
+# 11. DISTRIBUSI EVENT
 print("\n[8] Event distribution...")
-
 distribution = (
     events.groupBy("event_type")
     .count()
     .collect()
 )
-
 event_distribution = {
     row["event_type"]: int(row["count"])
     for row in distribution
 }
 
-# ==========================================
-# 12. VALIDATION REPORT
-# ==========================================
-
+# 12. VALIDASI REPORT
 elapsed = time.time() - start_time
-
 report = {
     "validation_engine": "Apache Spark 3.5.9",
     "encounter_records": int(encounter_count),
@@ -261,17 +166,11 @@ report = {
     "validation_time_seconds": round(elapsed, 2)
 }
 
-report_file = (
-    f"{REPORT_DIR}/patient_events_validation_report.json"
-)
-
+report_file = (f"{REPORT_DIR}/patient_events_validation_report.json")
 with open(report_file, "w") as f:
     json.dump(report, f, indent=4)
 
-# ==========================================
-# 13. DISPLAY RESULTS
-# ==========================================
-
+# 13. MENAMPILKAN HASIL VALIDASI
 print("\n" + "=" * 60)
 print("VALIDATION RESULTS")
 print("=" * 60)

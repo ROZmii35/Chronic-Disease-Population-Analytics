@@ -1,25 +1,16 @@
-
 import json
 import os
 from datetime import datetime, timezone
-
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pyspark import StorageLevel
 
-
-# ============================================================
-# 1. SPARK CONFIGURATION
-# ============================================================
-
+# 1. KONFIGURASI SPARK SESSION
 HDFS = "hdfs://localhost:9000/chronic-disease-analytics/raw"
-
 PROJECT_DIR = os.getcwd()
 REPORT_DIR = os.path.join(PROJECT_DIR, "reports")
 REPORT_FILE = os.path.join(REPORT_DIR, "data_validation_report.json")
-
 os.makedirs(REPORT_DIR, exist_ok=True)
-
 spark = (
     SparkSession.builder
     .appName("ChronicDisease-Data-Validation")
@@ -30,14 +21,9 @@ spark = (
     .config("spark.sql.adaptive.enabled", "true")
     .getOrCreate()
 )
-
 spark.sparkContext.setLogLevel("WARN")
 
-
-# ============================================================
 # 2. HELPER FUNCTIONS
-# ============================================================
-
 report = {
     "project": "Chronic Disease Population Analytics",
     "stage": "Data Validation",
@@ -47,10 +33,8 @@ report = {
     "overall_status": "RUNNING"
 }
 
-
 def count_rows(df):
     return df.count()
-
 
 def count_duplicates(df, column):
     return (
@@ -60,13 +44,11 @@ def count_duplicates(df, column):
         .count()
     )
 
-
 def count_nulls(df, column):
     return df.filter(
         F.col(column).isNull() |
         (F.trim(F.col(column).cast("string")) == "")
     ).count()
-
 
 def count_invalid_flag(df):
     return df.filter(
@@ -74,106 +56,52 @@ def count_invalid_flag(df):
         .isin("true", "false") == False
     ).count()
 
-
 def count_missing_origin(df):
     return count_nulls(df, "data_origin")
-
 
 def count_unmatched(df, encounters):
     """
     Memeriksa apakah encounter_id dan patient_nbr
     pada dataset anak cocok dengan dataset encounters.
     """
-
-    reference = (
-        encounters
-        .select("encounter_id", "patient_nbr")
-        .dropDuplicates(["encounter_id"])
-    )
-
-    child = (
-        df.select("encounter_id", "patient_nbr")
-        .dropDuplicates()
-    )
-
+    reference = (encounters.select("encounter_id", "patient_nbr").dropDuplicates(["encounter_id"]))
+    child = (df.select("encounter_id", "patient_nbr").dropDuplicates())
     unmatched = (
         child.alias("c")
-        .join(
-            reference.alias("r"),
-            F.col("c.encounter_id") == F.col("r.encounter_id"),
-            "left"
-        )
-        .filter(
-            F.col("r.encounter_id").isNull() |
-            (F.col("c.patient_nbr") != F.col("r.patient_nbr")) |
-            F.col("c.patient_nbr").isNull()
-        )
+        .join(reference.alias("r"),F.col("c.encounter_id") == F.col("r.encounter_id"),"left")
+        .filter(F.col("r.encounter_id").isNull() | (F.col("c.patient_nbr") != F.col("r.patient_nbr")) | F.col("c.patient_nbr").isNull())
     )
-
     return unmatched.count()
 
-
-# ============================================================
-# 3. READ DATA FROM HDFS
-# ============================================================
-
+# 3. MEMBACA DATASET DARI HDFS
 print("\n" + "=" * 65)
 print("CHRONIC DISEASE POPULATION ANALYTICS")
 print("DATA VALIDATION STARTED")
 print("=" * 65)
-
 encounters = (
     spark.read
     .option("header", True)
     .option("inferSchema", False)
     .csv(f"{HDFS}/encounters/encounters_synthetic.csv")
-#    .persist(StorageLevel.MEMORY_AND_DISK)
 )
-
-events = (
-    spark.read
-    .json(f"{HDFS}/patient_events/patient_events.jsonl")
-#    .persist(StorageLevel.MEMORY_AND_DISK)
-)
+events = (spark.read.json(f"{HDFS}/patient_events/patient_events.jsonl"))
 
 activities = (
     spark.read
     .option("header", True)
     .option("inferSchema", False)
     .csv(f"{HDFS}/clinical_activity/clinical_activity_records.csv")
-#    .persist(StorageLevel.MEMORY_AND_DISK)
 )
 
-
-# ============================================================
-# 4. ENCOUNTERS VALIDATION
-# ============================================================
-
+# 4. VALIDASI ENCOUNTERS
 print("\n[1/3] VALIDATING ENCOUNTERS...")
-
 encounter_count = count_rows(encounters)
-
-encounter_duplicates = count_duplicates(
-    encounters, "encounter_id"
-)
-
-encounter_null_id = count_nulls(
-    encounters, "encounter_id"
-)
-
-encounter_null_patient = count_nulls(
-    encounters, "patient_nbr"
-)
-
+encounter_duplicates = count_duplicates(encounters, "encounter_id")
+encounter_null_id = count_nulls(encounters, "encounter_id")
+encounter_null_patient = count_nulls(encounters, "patient_nbr")
 encounter_invalid_flag = count_invalid_flag(encounters)
-
 encounter_missing_origin = count_missing_origin(encounters)
-
-encounter_unique_patients = (
-    encounters.select("patient_nbr")
-    .distinct()
-    .count()
-)
+encounter_unique_patients = (encounters.select("patient_nbr").distinct().count())
 
 report["datasets"]["encounters"] = {
     "total_records": encounter_count,
@@ -193,23 +121,13 @@ print(f"Missing patient IDs        : {encounter_null_patient:,}")
 print(f"Invalid synthetic flags    : {encounter_invalid_flag:,}")
 print(f"Missing data origin        : {encounter_missing_origin:,}")
 
-
-# ============================================================
 # 5. PATIENT EVENTS VALIDATION
-# ============================================================
-
 print("\n[2/3] VALIDATING PATIENT EVENTS...")
-
 event_count = count_rows(events)
-
 event_duplicates = count_duplicates(events, "event_id")
-
 event_null_id = count_nulls(events, "event_id")
-
 event_null_patient = count_nulls(events, "patient_nbr")
-
 event_null_encounter = count_nulls(events, "encounter_id")
-
 event_invalid_flag = count_invalid_flag(events)
 
 allowed_event_types = [
@@ -220,20 +138,9 @@ allowed_event_types = [
     "followup_scheduled"
 ]
 
-event_invalid_type = events.filter(
-    ~F.col("event_type").isin(allowed_event_types) |
-    F.col("event_type").isNull()
-).count()
-
-event_invalid_timestamp = events.filter(
-    F.to_timestamp(
-        F.col("event_timestamp"),
-        "yyyy-MM-dd'T'HH:mm:ssX"
-    ).isNull()
-).count()
-
+event_invalid_type = events.filter(~F.col("event_type").isin(allowed_event_types) | F.col("event_type").isNull()).count()
+event_invalid_timestamp = events.filter(F.to_timestamp(F.col("event_timestamp"), "yyyy-MM-dd'T'HH:mm:ssX").isNull()).count()
 event_unmatched = count_unmatched(events, encounters)
-
 event_missing_source = count_nulls(events, "source")
 
 report["datasets"]["patient_events"] = {
@@ -256,31 +163,13 @@ print(f"Invalid timestamps        : {event_invalid_timestamp:,}")
 print(f"Unmatched patient pairs   : {event_unmatched:,}")
 print(f"Invalid synthetic flags   : {event_invalid_flag:,}")
 
-
-# ============================================================
-# 6. CLINICAL ACTIVITY VALIDATION
-# ============================================================
-
+# 6. VALIDASI CLINICAL ACTIVITY
 print("\n[3/3] VALIDATING CLINICAL ACTIVITY...")
-
 activity_count = count_rows(activities)
-
-activity_duplicates = count_duplicates(
-    activities, "activity_id"
-)
-
-activity_null_id = count_nulls(
-    activities, "activity_id"
-)
-
-activity_null_patient = count_nulls(
-    activities, "patient_nbr"
-)
-
-activity_null_encounter = count_nulls(
-    activities, "encounter_id"
-)
-
+activity_duplicates = count_duplicates(activities, "activity_id")
+activity_null_id = count_nulls(activities, "activity_id")
+activity_null_patient = count_nulls(activities, "patient_nbr")
+activity_null_encounter = count_nulls(activities, "encounter_id")
 activity_invalid_flag = count_invalid_flag(activities)
 
 allowed_activity_types = [
@@ -290,18 +179,9 @@ allowed_activity_types = [
     "Encounter_Metric"
 ]
 
-activity_invalid_type = activities.filter(
-    ~F.col("activity_type").isin(allowed_activity_types) |
-    F.col("activity_type").isNull()
-).count()
-
-activity_unmatched = count_unmatched(
-    activities, encounters
-)
-
-activity_missing_origin = count_missing_origin(
-    activities
-)
+activity_invalid_type = activities.filter(~F.col("activity_type").isin(allowed_activity_types) | F.col("activity_type").isNull()).count()
+activity_unmatched = count_unmatched(activities, encounters)
+activity_missing_origin = count_missing_origin(activities)
 
 report["datasets"]["clinical_activity"] = {
     "total_records": activity_count,
@@ -321,11 +201,7 @@ print(f"Invalid activity types    : {activity_invalid_type:,}")
 print(f"Unmatched patient pairs   : {activity_unmatched:,}")
 print(f"Invalid synthetic flags   : {activity_invalid_flag:,}")
 
-
-# ============================================================
-# 7. OVERALL VALIDATION RESULT
-# ============================================================
-
+# 7. OVERALL VALIDATION SUMMARY
 checks = [
     encounter_duplicates,
     encounter_null_id,
@@ -352,38 +228,23 @@ checks = [
 ]
 
 total_issues = sum(checks)
-
-report["total_records"] = (
-    encounter_count + event_count + activity_count
-)
-
+report["total_records"] = (encounter_count + event_count + activity_count)
 report["total_validation_issues"] = total_issues
+report["overall_status"] = ("PASSED" if total_issues == 0 else "REVIEW_REQUIRED")
 
-report["overall_status"] = (
-    "PASSED" if total_issues == 0 else "REVIEW_REQUIRED"
-)
-
-
-# ============================================================
-# 8. SAVE VALIDATION REPORT
-# ============================================================
-
+# 8. MENYIMPAN VALIDATION REPORT
 with open(REPORT_FILE, "w", encoding="utf-8") as file:
     json.dump(report, file, indent=4, ensure_ascii=False)
 
 print("\n" + "=" * 65)
 print("DATA VALIDATION SUMMARY")
 print("=" * 65)
-
 print(f"Total records       : {report['total_records']:,}")
 print(f"Total issues        : {total_issues:,}")
 print(f"Overall status      : {report['overall_status']}")
-
 print(f"\nReport saved to:")
 print(REPORT_FILE)
-
 print("\nDATA VALIDATION COMPLETED")
-
 encounters.unpersist()
 events.unpersist()
 activities.unpersist()

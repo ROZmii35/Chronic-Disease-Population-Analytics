@@ -1,0 +1,5 @@
+scenario,total_rows,overall_lt30_pct,circulatory_volume_pct,circulatory_lt30_pct,diabetes_volume_pct,diabetes_lt30_pct,kesimpulan
+Baseline Curated Sintetis (Encounter-level),13734415,11.168,29.91,11.46,8.61,13.0,"Circulatory Rank 1 Volume, Diabetes Tertinggi Readmisi Dini Kronis"
+Dataset Mentah UCI Asli (101.766 baris),101766,11.16,29.91,11.45,8.61,12.98,KONSISTEN: Arah dan proporsi sama persis dengan data sintetis
+Encounter Pertama per Pasien (Patient-level),9650000,7.25,30.27,7.69,8.01,7.63,KONSISTEN: Tingkat readmisi sedikit lebih rendah pada kunjungan perdana
+Eksklusi Pasien Meninggal / Hospice,13407900,11.4,29.88,11.69,8.73,13.12,"KONSISTEN: Readmisi naik +0,23 pp membuktikan eliminasi bias hospice"

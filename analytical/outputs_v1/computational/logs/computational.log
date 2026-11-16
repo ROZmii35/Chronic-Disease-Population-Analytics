@@ -1,0 +1,66 @@
+2026-11-16 23:04:29,273 [INFO] =================================================================
+2026-11-16 23:04:29,273 [INFO] STARTING COMPUTATIONAL BENCHMARK (OPERATION A VS OPERATION B)
+2026-11-16 23:04:29,273 [INFO] =================================================================
+2026-11-16 23:04:39,351 [INFO] Loaded 13,734,415 records.
+2026-11-16 23:04:39,351 [INFO] Environment: CPU Cores=8, Driver Memory=4g, Shuffle Partitions=8
+2026-11-16 23:04:39,351 [INFO] [1/4] Running Operation A (Simple Aggregation)...
+2026-11-16 23:04:42,574 [INFO]   Op A Trial 1/5: 1.043 s (Count=30)
+2026-11-16 23:04:43,651 [INFO]   Op A Trial 2/5: 1.077 s (Count=30)
+2026-11-16 23:04:44,770 [INFO]   Op A Trial 3/5: 1.118 s (Count=30)
+2026-11-16 23:04:45,799 [INFO]   Op A Trial 4/5: 1.028 s (Count=30)
+2026-11-16 23:04:46,735 [INFO]   Op A Trial 5/5: 0.935 s (Count=30)
+2026-11-16 23:04:46,735 [INFO] Operation A Median: 1.043 s (Mean: 1.040 s, Std: 0.068 s)
+2026-11-16 23:04:46,786 [INFO] [2/4] Running Operation B (Complex Window & Sort)...
+2026-11-16 23:06:24,747 [INFO]   Op B Trial 1/5: 82.567 s (Count=10)
+2026-11-16 23:06:52,216 [INFO]   Op B Trial 2/5: 27.468 s (Count=10)
+2026-11-16 23:08:01,315 [INFO]   Op B Trial 3/5: 69.081 s (Count=10)
+2026-11-16 23:09:11,572 [INFO]   Op B Trial 4/5: 70.253 s (Count=10)
+2026-11-16 23:09:44,595 [INFO]   Op B Trial 5/5: 33.032 s (Count=10)
+2026-11-16 23:09:44,686 [INFO] Operation B Median: 69.081 s (Mean: 56.480 s, Std: 24.599 s)
+2026-11-16 23:09:44,686 [INFO] Complexity Ratio (Op B / Op A): 66.22x
+2026-11-16 23:10:06,164 [INFO] Saved benchmark summary table to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\computational\tables\benchmark_op_a_vs_b.csv
+2026-11-16 23:11:40,339 [INFO] RESULT.md saved to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\computational\RESULT.md
+2026-11-16 23:11:40,355 [INFO] COMPUTATIONAL MODULE COMPLETED SUCCESSFULLY.
+2026-11-16 23:11:47,293 [INFO] Closing down clientserver connection
+2026-11-16 23:56:33,543 [INFO] =================================================================
+2026-11-16 23:56:33,544 [INFO] STARTING COMPUTATIONAL BENCHMARK (OP A vs OP A2 vs OP B)
+2026-11-16 23:56:33,544 [INFO] =================================================================
+2026-11-16 23:56:50,804 [INFO] Loaded 13,734,415 records.
+2026-11-16 23:56:50,804 [INFO] Environment: CPU Cores=8, Driver Memory=4g, Shuffle Partitions=8
+2026-11-16 23:56:50,804 [INFO] [1/4] Running Operation A: Simple GroupBy (age, readmitted)...
+2026-11-16 23:56:50,846 [INFO]   Op A Warm-up run...
+2026-11-16 23:56:54,090 [INFO]   Op A Trial 1/5: 1.027 s (Count=30)
+2026-11-16 23:56:55,009 [INFO]   Op A Trial 2/5: 0.919 s (Count=30)
+2026-11-16 23:56:55,946 [INFO]   Op A Trial 3/5: 0.935 s (Count=30)
+2026-11-16 23:56:56,901 [INFO]   Op A Trial 4/5: 0.956 s (Count=30)
+2026-11-16 23:56:57,925 [INFO]   Op A Trial 5/5: 1.024 s (Count=30)
+2026-11-16 23:56:57,986 [INFO] Op A Median: 0.956 s (Min: 0.919s, Max: 1.027s, Std: 0.045 s)
+2026-11-16 23:56:57,991 [INFO] Closing down clientserver connection
+2026-11-16 23:58:19,924 [INFO] =================================================================
+2026-11-16 23:58:19,924 [INFO] STARTING COMPUTATIONAL BENCHMARK (OP A vs OP A2 vs OP B)
+2026-11-16 23:58:19,924 [INFO] =================================================================
+2026-11-16 23:58:29,303 [INFO] Loaded 13,734,415 records.
+2026-11-16 23:58:29,304 [INFO] Environment: CPU Cores=8, Driver Memory=4g, Shuffle Partitions=8
+2026-11-16 23:58:29,304 [INFO] [1/4] Running Operation A: Simple GroupBy (age, readmitted)...
+2026-11-16 23:58:29,349 [INFO]   Op A Warm-up run...
+2026-11-16 23:58:32,277 [INFO]   Op A Trial 1/5: 1.036 s (Count=30)
+2026-11-16 23:58:33,601 [INFO]   Op A Trial 2/5: 1.325 s (Count=30)
+2026-11-16 23:58:34,476 [INFO]   Op A Trial 3/5: 0.875 s (Count=30)
+2026-11-16 23:58:35,486 [INFO]   Op A Trial 4/5: 1.009 s (Count=30)
+2026-11-16 23:58:36,399 [INFO]   Op A Trial 5/5: 0.912 s (Count=30)
+2026-11-16 23:58:36,400 [INFO] Op A Median: 1.009 s (Min: 0.875s, Max: 1.325s, Std: 0.158 s)
+2026-11-16 23:58:36,427 [INFO] [2/4] Running Operation A2 (Control): High Cardinality GroupBy (patient_nbr)...
+2026-11-16 23:58:36,451 [INFO]   Op A2 Warm-up run...
+2026-11-16 23:59:18,435 [INFO]   Op A2 Trial 1/3: 29.734 s (Count=9650000)
+2026-11-16 23:59:26,677 [INFO]   Op A2 Trial 2/3: 8.242 s (Count=9650000)
+2026-11-16 23:59:54,192 [INFO]   Op A2 Trial 3/3: 27.515 s (Count=9650000)
+2026-11-16 23:59:54,264 [INFO] Op A2 Median: 27.515 s (Min: 8.242s, Max: 29.734s, Std: 9.651 s)
+2026-11-16 23:59:54,294 [INFO] [3/4] Running Operation B: Complex Window PartitionBy & Sort...
+2026-11-16 23:59:54,611 [INFO]   Op B Warm-up run...
+2026-11-17 00:01:04,986 [INFO]   Op B Trial 1/3: 39.202 s (Count=3)
+2026-11-17 00:01:48,705 [INFO]   Op B Trial 2/3: 43.719 s (Count=3)
+2026-11-17 00:03:02,685 [INFO]   Op B Trial 3/3: 73.979 s (Count=3)
+2026-11-17 00:03:02,686 [INFO] Op B Median: 43.719 s (Min: 39.202s, Max: 73.979s, Std: 15.440 s)
+2026-11-17 00:03:02,686 [INFO] Complexity Ratios: Op A2/Op A = 27.27x | Op B/Op A2 = 1.59x | Op B/Op A = 43.33x
+2026-11-17 00:03:49,059 [INFO] COMPUTATIONAL BENCHMARK MODULE COMPLETED SUCCESSFULLY.
+2026-11-17 00:03:50,498 [INFO] Closing down clientserver connection

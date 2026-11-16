@@ -1,0 +1,19 @@
+2026-11-16 23:12:39,539 [INFO] =================================================================
+2026-11-16 23:12:39,540 [INFO] STARTING VELOCITY MODULE ANALYSIS (MICRO-BATCH SIMULATION & PARTITIONS)
+2026-11-16 23:12:39,540 [INFO] =================================================================
+2026-11-16 23:12:39,551 [INFO] Loaded partition benchmark from reports/partition_benchmark.csv
+2026-11-16 23:12:39,551 [INFO] [1/3] Running Micro-Batch Stream Ingestion Simulation (SIMULATED)...
+2026-11-16 23:12:49,681 [INFO]   Batch 1/8: 857,811 records in 5.757 s (148,996.7 rec/s)
+2026-11-16 23:12:50,315 [INFO]   Batch 2/8: 857,533 records in 0.633 s (1,354,781.4 rec/s)
+2026-11-16 23:12:50,933 [INFO]   Batch 3/8: 857,237 records in 0.618 s (1,386,121.3 rec/s)
+2026-11-16 23:12:51,461 [INFO]   Batch 4/8: 858,057 records in 0.506 s (1,696,367.9 rec/s)
+2026-11-16 23:12:51,991 [INFO]   Batch 5/8: 858,325 records in 0.530 s (1,619,728.1 rec/s)
+2026-11-16 23:12:52,474 [INFO]   Batch 6/8: 855,808 records in 0.482 s (1,774,840.1 rec/s)
+2026-11-16 23:12:52,869 [INFO]   Batch 7/8: 857,902 records in 0.395 s (2,169,712.1 rec/s)
+2026-11-16 23:12:53,331 [INFO]   Batch 8/8: 858,297 records in 0.461 s (1,861,586.3 rec/s)
+2026-11-16 23:12:53,333 [INFO] Saved simulated micro-batch table to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\velocity\tables\simulated_micro_batches.csv
+2026-11-16 23:12:53,965 [INFO] Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-11-16 23:12:53,966 [INFO] Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-11-16 23:12:54,223 [INFO] RESULT.md saved to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\velocity\RESULT.md
+2026-11-16 23:12:54,223 [INFO] VELOCITY MODULE COMPLETED SUCCESSFULLY.
+2026-11-16 23:12:54,500 [INFO] Closing down clientserver connection

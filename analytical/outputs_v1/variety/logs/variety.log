@@ -1,0 +1,8 @@
+2026-11-16 23:13:22,818 [INFO] =================================================================
+2026-11-16 23:13:22,818 [INFO] STARTING VARIETY MODULE ANALYSIS (MULTI-FORMAT DATA INTEGRATION)
+2026-11-16 23:13:22,818 [INFO] =================================================================
+2026-11-16 23:13:22,821 [INFO] Saved format comparison table to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\variety\tables\source_vs_target_formats.csv
+2026-11-16 23:13:32,863 [INFO] Saved schema field definitions
+2026-11-16 23:13:35,671 [INFO] RESULT.md saved to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\variety\RESULT.md
+2026-11-16 23:13:35,671 [INFO] VARIETY MODULE COMPLETED SUCCESSFULLY.
+2026-11-16 23:13:35,947 [INFO] Closing down clientserver connection

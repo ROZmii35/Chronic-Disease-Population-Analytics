@@ -1,0 +1,5 @@
+dataset_role,source_raw_format,source_record_count,raw_size,curated_format,curated_size,key_join_columns
+Encounters (Main Master),CSV Tabular,13734415,2.80 GB (3.002.925.426 bytes),Parquet Snappy,298.80 MB,"patient_nbr, encounter_id"
+Patient Events (Temporal Logs),JSON Lines (NDJSON),4406252,953.67 MB (999.999.861 bytes),Parquet Snappy,103.67 MB,"patient_nbr, encounter_id"
+Clinical Activity (Melted Features),CSV Long Format (Unpivoted),8723515,958.83 MB (1.005.400.992 bytes),Parquet Snappy,76.00 MB,"patient_nbr, encounter_id"
+Integrated Analytics (Target),Multi-Source Unified,13734415,4.66 GB (Total Raw),Parquet Snappy Columnar,328.87 MB,Primary Key: encounter_id

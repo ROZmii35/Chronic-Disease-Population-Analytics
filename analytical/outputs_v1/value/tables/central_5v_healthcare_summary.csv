@@ -1,0 +1,12 @@
+diagnosis_group,volume_encounters,avg_length_of_stay_days,avg_medications_prescribed,early_readmission_risk_lt30_pct
+Circulatory,4108120,4.23,17.1,11.46
+Other,2232958,4.49,13.94,11.02
+Respiratory,1946180,4.23,16.35,9.72
+Digestive,1276378,4.36,14.74,10.78
+Diabetes,1182906,4.34,14.08,13.0
+Injury,941254,4.62,17.32,12.25
+Genitourinary,689572,4.25,14.95,10.83
+Musculoskeletal,667838,3.92,19.85,9.47
+Neoplasms,463057,5.36,17.53,10.06
+Other (V/E code),223364,7.53,15.42,16.2
+Unknown,2788,3.98,14.16,23.28

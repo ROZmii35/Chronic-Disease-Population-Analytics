@@ -1,0 +1,6 @@
+encounter_id,patient_nbr,age,race,diag_1,time_in_hospital,num_medications,total_event_count,total_activity_count,readmitted
+SYN_E000000000039,SYN_P000000024,[70-80),Caucasian,786,1,12,1,0,NO
+SYN_E000000000055,SYN_P000000035,[80-90),Caucasian,435,7,27,0,0,NO
+SYN_E000000000074,SYN_P000000054,[70-80),Caucasian,428,6,15,1,0,NO
+SYN_E000000000110,SYN_P000000078,[60-70),AfricanAmerican,786,3,12,0,0,NO
+SYN_E000000000121,SYN_P000000081,[30-40),AfricanAmerican,599,5,16,0,0,NO

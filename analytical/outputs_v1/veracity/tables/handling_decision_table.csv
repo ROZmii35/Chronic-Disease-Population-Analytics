@@ -1,0 +1,8 @@
+kolom,pct_missing,keputusan,alasan
+weight,96.86,Dikeluarkan dari analisis utama,"Tingkat ketiadaan data ekstrem (>96%), jika dipaksakan akan memicu seleksi bias berat."
+max_glu_serum,94.74,Diberi flag / Analisis sub-populasi khusus,"Hanya 5,26% pasien yang dites glukosa serum saat rawat inap; 94,74% bukan missing acak melainkan indikasi klinis dokter."
+A1Cresult,83.27,Diberi flag / Analisis sub-populasi khusus,"Tes HbA1c hanya dilakukan pada 16,73% encounter diabetes; dianalisis terpisah sebagai penanda kepatuhan protokol."
+medical_specialty,49.09,Diberi flag 'Missing/Unknown',Separuh dokter tidak tercatat spesialisasi; dipertahankan sebagai kategori 'Missing' untuk evaluasi operasional.
+payer_code,39.56,Dikeluarkan dari analisis klinis,"Atribut administratif asuransi/keuangan, tidak relevan untuk analisis klinis readmisi populasi."
+race,2.23,Diberi flag 'Unknown',"Persentase ketiadaan data kecil (2,23%), dipertahankan tanpa imputasi buatan."
+diag_1,0.02,Diberi flag 'Unknown',"Hanya 0,02% missing, dimasukkan ke dalam kategori ICD-9 'Unknown' dalam analisis diagnosis."

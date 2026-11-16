@@ -1,0 +1,35 @@
+== Physical Plan ==
+* HashAggregate (5)
++- Exchange (4)
+   +- * HashAggregate (3)
+      +- * ColumnarToRow (2)
+         +- Scan parquet  (1)
+
+
+(1) Scan parquet 
+Output [2]: [age#4, readmitted#49]
+Batched: true
+Location: InMemoryFileIndex [file:/D:/Kuliah/Semester 7/BIG_DATA/UTS/Chronic-Disease-Population-Analytics/data/curated/parquet/encounter_analytics]
+ReadSchema: struct<age:string,readmitted:string>
+
+(2) ColumnarToRow [codegen id : 1]
+Input [2]: [age#4, readmitted#49]
+
+(3) HashAggregate [codegen id : 1]
+Input [2]: [age#4, readmitted#49]
+Keys [2]: [age#4, readmitted#49]
+Functions [1]: [partial_count(1)]
+Aggregate Attributes [1]: [count#1287L]
+Results [3]: [age#4, readmitted#49, count#1288L]
+
+(4) Exchange
+Input [3]: [age#4, readmitted#49, count#1288L]
+Arguments: hashpartitioning(age#4, readmitted#49, 8), ENSURE_REQUIREMENTS, [plan_id=398]
+
+(5) HashAggregate [codegen id : 2]
+Input [3]: [age#4, readmitted#49, count#1288L]
+Keys [2]: [age#4, readmitted#49]
+Functions [1]: [count(1)]
+Aggregate Attributes [1]: [count(1)#1234L]
+Results [3]: [age#4, readmitted#49, count(1)#1234L AS total#1235L]
+

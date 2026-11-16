@@ -1,0 +1,4 @@
+metrik_klinis,mean_lt30,std_lt30,mean_no,std_no,selisih_rata_rata,cohens_d,kategori_efek,interpretasi_asosiatif
+"Lama Rawat Inap (time_in_hospital, hari)",4.78,3.03,4.26,2.97,0.52,0.175,Efek kecil (Small Effect),"Pasien dengan readmisi dini berasosiasi dengan masa rawat lebih panjang (+0,52 hari)."
+Jumlah Obat Diberikan (num_medications),16.92,8.11,15.67,8.43,1.25,0.149,Efek kecil (Small Effect),"Pasien dengan readmisi dini berasosiasi dengan jumlah obat lebih banyak (+1,25 jenis obat)."
+Jumlah Prosedur Lab (num_lab_procedures),44.27,19.25,42.39,19.8,1.87,0.095,Efek terabaikan (Negligible Effect),"Jumlah tes lab memiliki perbedaan marjinal (+0,79 tes) antara kelompok readmisi dan non-readmisi."

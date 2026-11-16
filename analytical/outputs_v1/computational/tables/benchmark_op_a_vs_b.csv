@@ -1,0 +1,4 @@
+operation,query_type,kardinalitas_kunci,sorting_required,trials_detik,median_detik,min_detik,max_detik,mean_detik,std_detik,rasio_vs_op_a
+Operation A (Simple GroupBy),Low Cardinality HashAggregate,30 kelompok (age x readmitted),TIDAK,"[1.036, 1.325, 0.875, 1.009, 0.912]",1.009,0.875,1.325,1.031,0.158,1.0
+Operation A2 (Control High-Card GroupBy),High Cardinality HashAggregate,9.650.229 kelompok (patient_nbr),TIDAK,"[29.734, 8.242, 27.515]",27.515,8.242,29.734,21.83,9.651,27.27
+Operation B (Partitioned Window & Sort),Sort-Based WindowExec + Exchange,9.650.229 kelompok (patient_nbr),YA (Sort patient_nbr ASC),"[39.202, 43.719, 73.979]",43.719,39.202,73.979,52.3,15.44,43.33

@@ -1,0 +1,2 @@
+dataset_name,total_records,total_columns,parquet_partitions_count,local_disk_size_mb,raw_total_gb,curated_total_mb,storage_reduction_pct,single_aggregation_elapsed_seconds,source_relationships
+encounter_analytics,13734415,66,16,326.32,4.66,478.47,89.98,1.812,1:N (1 Encounter to multiple Events and Activities)

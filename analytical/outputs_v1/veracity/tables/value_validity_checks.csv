@@ -1,0 +1,5 @@
+metric,invalid_count,status
+time_in_hospital_range_[1-14],0,PASSED
+number_diagnoses_range_[1-16],0,PASSED
+readmitted_categories_validity,0,PASSED
+age_buckets_validity,0,PASSED

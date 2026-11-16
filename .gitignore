@@ -1,0 +1,6 @@
+analytical/.venv/
+analytical/hadoop/
+analytical/**/__pycache__/
+**/__pycache__/
+*.pyc
+data/

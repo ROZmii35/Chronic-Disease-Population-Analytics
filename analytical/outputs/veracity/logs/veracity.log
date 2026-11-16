@@ -1,0 +1,44 @@
+2026-11-16 22:52:57,416 [INFO] =================================================================
+2026-11-16 22:52:57,416 [INFO] STARTING VERACITY MODULE ANALYSIS (DATA QUALITY & INTEGRITY)
+2026-11-16 22:52:57,416 [INFO] =================================================================
+2026-11-16 22:53:07,181 [INFO] Closing down clientserver connection
+2026-11-16 23:01:01,291 [INFO] =================================================================
+2026-11-16 23:01:01,291 [INFO] STARTING VERACITY MODULE ANALYSIS (DATA QUALITY & INTEGRITY)
+2026-11-16 23:01:01,291 [INFO] =================================================================
+2026-11-16 23:01:17,014 [INFO] Loaded 13,734,415 records from encounter_analytics.
+2026-11-16 23:01:17,014 [INFO] [1/4] Analyzing Missing Values & Noise '?' Elimination (Before vs After)...
+2026-11-16 23:01:23,807 [INFO] Saved missing value comparison table to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\veracity\tables\missing_value_comparison.csv
+2026-11-16 23:01:25,520 [INFO] [2/4] Validating Key Uniqueness, ID Nulls, & Table Integrity...
+2026-11-16 23:02:40,761 [INFO] Saved integrity checks to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\veracity\tables\data_integrity_validation.csv
+2026-11-16 23:02:40,761 [INFO] [3/4] Validating Numeric Ranges & Categorical Consistency...
+2026-11-16 23:02:58,229 [INFO] Saved validity checks to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\veracity\tables\value_validity_checks.csv
+2026-11-16 23:02:58,229 [INFO] [4/4] Validating Statistical Fidelity of Synthetic Sampling...
+2026-11-16 23:02:59,910 [INFO] RESULT.md saved to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\veracity\RESULT.md
+2026-11-16 23:02:59,910 [INFO] VERACITY MODULE COMPLETED SUCCESSFULLY.
+2026-11-16 23:03:01,944 [INFO] Closing down clientserver connection
+2026-11-16 23:38:31,923 [INFO] =================================================================
+2026-11-16 23:38:31,923 [INFO] STARTING VERACITY MODULE ANALYSIS (REVISED: BEFORE VS AFTER)
+2026-11-16 23:38:31,925 [INFO] =================================================================
+2026-11-16 23:38:31,925 [INFO] Membaca dataset UCI mentah: data\raw\diabetic_data.csv ...
+2026-11-16 23:38:32,587 [INFO] Dataset UCI asli terbaca: 101,766 baris.
+2026-11-16 23:38:42,733 [INFO] Loaded 13,734,415 records from encounter_analytics.
+2026-11-16 23:40:58,418 [INFO] Saved missing value comparison table to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\veracity\tables\missing_value_comparison.csv
+2026-11-16 23:40:58,461 [INFO] Saved handling decision table to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\veracity\tables\handling_decision_table.csv
+2026-11-16 23:40:58,474 [INFO] Saved three quality issues table to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\veracity\tables\three_quality_issues_before_after.csv
+2026-11-16 23:40:58,487 [INFO] Saved data integrity validation table to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\veracity\tables\data_integrity_validation.csv
+2026-11-16 23:42:22,170 [INFO] RESULT.md saved to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\veracity\RESULT.md
+2026-11-16 23:42:22,171 [INFO] VERACITY MODULE REVISION COMPLETED SUCCESSFULLY.
+2026-11-16 23:42:23,739 [INFO] Closing down clientserver connection
+2026-11-17 00:05:54,595 [INFO] =================================================================
+2026-11-17 00:05:54,595 [INFO] STARTING VERACITY MODULE ANALYSIS (REVISED: BEFORE VS AFTER)
+2026-11-17 00:05:54,602 [INFO] =================================================================
+2026-11-17 00:05:54,603 [INFO] Membaca dataset UCI mentah: data\raw\diabetic_data.csv ...
+2026-11-17 00:05:55,189 [INFO] Dataset UCI asli terbaca: 101,766 baris.
+2026-11-17 00:06:12,072 [INFO] Loaded 13,734,415 records from encounter_analytics.
+2026-11-17 00:07:27,571 [INFO] Saved missing value comparison table to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\veracity\tables\missing_value_comparison.csv
+2026-11-17 00:07:27,684 [INFO] Saved handling decision table to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\veracity\tables\handling_decision_table.csv
+2026-11-17 00:07:27,712 [INFO] Saved three quality issues table to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\veracity\tables\three_quality_issues_before_after.csv
+2026-11-17 00:07:27,726 [INFO] Saved data integrity validation table to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\veracity\tables\data_integrity_validation.csv
+2026-11-17 00:07:57,481 [INFO] RESULT.md saved to D:\Kuliah\Semester 7\BIG_DATA\UTS\Chronic-Disease-Population-Analytics\analytical\outputs\veracity\RESULT.md
+2026-11-17 00:07:57,481 [INFO] VERACITY MODULE REVISION COMPLETED SUCCESSFULLY.
+2026-11-17 00:07:58,214 [INFO] Closing down clientserver connection

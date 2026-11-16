@@ -1,0 +1,4 @@
+isu_kualitas,before_uci_asli,after_curated_sintetis,dampak_dan_catatan_integritas
+Karakter Kotor '?' pada Fitur Utama,"98,569 baris (96.86% pada weight)","0 baris (0,00%) sisa '?' (terstandarisasi menjadi NULL)","Pipeline Data Engineer berhasil mengeliminasi 100% karakter '?'. Catatan: Transformasi ini menstandarkan representasi missing, BUKAN mengisi (imputasi) nilai."
+Nilai Gender 'Unknown/Invalid',3 baris (0.0029%),411 baris (0.003%),Proporsi noise diwariskan secara presisi oleh bootstrap sintetis; volume sangat kecil sehingga tidak membiaskan stratifikasi gender.
+"Pasien Meninggal / Hospice (Discharge 11, 13, 14, 19, 20, 21)","2,423 baris (2.38%)","326,515 baris (2.38%)",Pasien meninggal/hospice secara klinis TIDAK MUNGKIN readmisi hidup. Memasukkannya dalam denominator membiaskan (underestimate) readmission rate. Dievaluasi via analisis sensitivitas.

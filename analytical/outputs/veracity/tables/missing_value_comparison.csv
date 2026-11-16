@@ -1,0 +1,10 @@
+column_name,uci_raw_missing_count,uci_raw_missing_pct,curated_null_count,curated_null_pct,curated_remaining_question_marks,pct_difference
+weight,98569,96.86,13302518,96.86,0,0.0
+max_glu_serum,96420,94.75,13012095,94.74,0,-0.01
+A1Cresult,84748,83.28,11436074,83.27,0,-0.01
+medical_specialty,49949,49.08,6741800,49.09,0,0.01
+payer_code,40256,39.56,5433415,39.56,0,0.0
+race,2273,2.23,306651,2.23,0,0.0
+diag_1,21,0.02,2788,0.02,0,0.0
+diag_2,358,0.35,48200,0.35,0,0.0
+diag_3,1423,1.4,191621,1.4,0,0.0

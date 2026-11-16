@@ -1,0 +1,5 @@
+dataset,raw_bytes,raw_size,curated_bytes,curated_size,size_reduction_percent
+encounters,3002925426,2.80 GB,313317985,298.80 MB,89.57
+patient_events,999999861,953.67 MB,108700898,103.67 MB,89.13
+clinical_activity,1005400992,958.83 MB,79691655,76.00 MB,92.07
+TOTAL,5008326279,4.66 GB,501710538,478.47 MB,89.98

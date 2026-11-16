@@ -1,0 +1,65 @@
+== Physical Plan ==
+* HashAggregate (11)
++- Exchange (10)
+   +- * HashAggregate (9)
+      +- * Project (8)
+         +- * Filter (7)
+            +- Window (6)
+               +- * Sort (5)
+                  +- Exchange (4)
+                     +- * Project (3)
+                        +- * ColumnarToRow (2)
+                           +- Scan parquet  (1)
+
+
+(1) Scan parquet 
+Output [3]: [patient_nbr#0, time_in_hospital#9, readmitted#49]
+Batched: true
+Location: InMemoryFileIndex [file:/D:/Kuliah/Semester 7/BIG_DATA/UTS/Chronic-Disease-Population-Analytics/data/curated/parquet/encounter_analytics]
+ReadSchema: struct<patient_nbr:string,time_in_hospital:string,readmitted:string>
+
+(2) ColumnarToRow [codegen id : 1]
+Input [3]: [patient_nbr#0, time_in_hospital#9, readmitted#49]
+
+(3) Project [codegen id : 1]
+Output [3]: [patient_nbr#0, cast(time_in_hospital#9 as int) AS time_in_hospital#116, readmitted#49]
+Input [3]: [patient_nbr#0, time_in_hospital#9, readmitted#49]
+
+(4) Exchange
+Input [3]: [patient_nbr#0, time_in_hospital#116, readmitted#49]
+Arguments: hashpartitioning(patient_nbr#0, 8), ENSURE_REQUIREMENTS, [plan_id=1165]
+
+(5) Sort [codegen id : 2]
+Input [3]: [patient_nbr#0, time_in_hospital#116, readmitted#49]
+Arguments: [patient_nbr#0 ASC NULLS FIRST], false, 0
+
+(6) Window
+Input [3]: [patient_nbr#0, time_in_hospital#116, readmitted#49]
+Arguments: [avg(time_in_hospital#116) windowspecdefinition(patient_nbr#0, specifiedwindowframe(RowFrame, unboundedpreceding$(), unboundedfollowing$())) AS avg_patient_los#1390], [patient_nbr#0]
+
+(7) Filter [codegen id : 3]
+Input [4]: [patient_nbr#0, time_in_hospital#116, readmitted#49, avg_patient_los#1390]
+Condition : ((isnotnull(time_in_hospital#116) AND isnotnull(avg_patient_los#1390)) AND (cast(time_in_hospital#116 as double) > avg_patient_los#1390))
+
+(8) Project [codegen id : 3]
+Output [1]: [readmitted#49]
+Input [4]: [patient_nbr#0, time_in_hospital#116, readmitted#49, avg_patient_los#1390]
+
+(9) HashAggregate [codegen id : 3]
+Input [1]: [readmitted#49]
+Keys [1]: [readmitted#49]
+Functions [1]: [partial_count(1)]
+Aggregate Attributes [1]: [count#1621L]
+Results [2]: [readmitted#49, count#1622L]
+
+(10) Exchange
+Input [2]: [readmitted#49, count#1622L]
+Arguments: hashpartitioning(readmitted#49, 8), ENSURE_REQUIREMENTS, [plan_id=1175]
+
+(11) HashAggregate [codegen id : 4]
+Input [2]: [readmitted#49, count#1622L]
+Keys [1]: [readmitted#49]
+Functions [1]: [count(1)]
+Aggregate Attributes [1]: [count(1)#1525L]
+Results [2]: [readmitted#49, count(1)#1525L AS count#1526L]
+

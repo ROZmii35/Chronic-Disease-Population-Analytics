@@ -1,0 +1,12 @@
+diagnosis_group,total,lt30,pct_pop,pct_lt30,rank_volume
+Circulatory,2920948,224514,30.27,7.69,1
+Other,1552372,109888,16.09,7.08,2
+Respiratory,1321353,79066,13.69,5.98,3
+Digestive,887659,58719,9.2,6.62,4
+Diabetes,772729,58951,8.01,7.63,5
+Injury,660798,57283,6.85,8.67,6
+Musculoskeletal,537459,36345,5.57,6.76,7
+Genitourinary,481421,33621,4.99,6.98,8
+Neoplasms,367574,24042,3.81,6.54,9
+Other (V/E code),145867,17218,1.51,11.8,10
+Unknown,1820,385,0.02,21.15,11

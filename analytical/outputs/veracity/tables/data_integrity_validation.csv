@@ -1,0 +1,9 @@
+aturan_validasi,scope,pelanggaran,status
+Primary Key Keunikan (encounter_id),13.734.415 baris,0,PASSED
+Primary Key Null Check (encounter_id is null),13.734.415 baris,0,PASSED
+Foreign Key Null Check (patient_nbr is null),13.734.415 baris,0,PASSED
+Rentang Lama Rawat (time_in_hospital: 1 - 14 hari),13.734.415 baris,0,PASSED
+Rentang Jumlah Diagnosis (number_diagnoses: 1 - 16),13.734.415 baris,0,PASSED
+Total Event Count Non-Negatif (>= 0),13.734.415 baris,0,PASSED
+Total Activity Count Non-Negatif (>= 0),13.734.415 baris,0,PASSED
+Pengulangan Pasien (Efek Bootstrap),"9,650,000 pasien unik","2,263,754 pasien multi-encounter",INFO
